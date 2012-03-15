@@ -5,11 +5,11 @@ import pyWIMP.DMModels.wimp_model as wimp_model
 import ROOT
 import re
 mass_of_wimp = 7
-basevars = BaseVariables(0.0, 4.0, 0, 10, True, 0.0)  
+basevars = BaseVariables(0.0, 4.0, 0, 10, True)  
 time = basevars.get_time()
 time.setConstant()
 time.setVal(0)
-wm = wimp_model.WIMPModel(basevars, mass_of_wimp,  nucl_recoil=True)
+wm = wimp_model.WIMPModel(basevars, mass_of_wimp,  nucl_recoil=False)
 model = wm.get_WIMP_model()
 expected_events = model.expectedEvents(ROOT.RooArgSet(basevars.get_energy()))
 hist = model.createHistogram("hist", basevars.get_energy(), \
